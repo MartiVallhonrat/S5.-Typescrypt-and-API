@@ -1,15 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-100">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>S5.-JavaScript-&-API</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <div id="HTMLjoke"></div>
-    <button id="nextButton">Següent acudit</button>
+<body class="container h-100">
+    <div class="container pt-3 d-flex">
+        <div class="p-2 bg-light shadow-lg rounded">Temps: dia ennuvolat</div>
+    </div>
+    <div class="d-flex h-100">
+        <div class="container p-5 w-auto align-self-center bg-light shadow-lg rounded">
+            <div class="container row mt-3">
+                <div class="col-xs-1 text-center h2"><strong>Preparats per riure?</strong></div>
+            </div>
+            <div class="container row mt-3">
+                <div class="col-xs-1 text-center" id="HTMLjoke"></div>
+            </div>
+            <div class="container row mt-3"></div>
+                <div class="col-xs-1 text-center">
+                    <button type="button" class="btn btn-primary" id="nextButton">Següent acudit</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <script src="index.js"></script>
 </body>
 </html>
