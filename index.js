@@ -94,6 +94,11 @@ function fetchChuckJoke() {
     counter = counter + 1;
 }
 
+function changeBackround() {
+
+    document.getElementById("blobBackground").style.backgroundImage = `url('svg/blob${Math.floor(Math.random() * 9)}.svg')`;
+}
+
 function fetchJoke() {
     if ((counter % 2) == 0) {
 
@@ -104,6 +109,8 @@ function fetchJoke() {
         fetchJokeDad();
 
     }
+
+    changeBackround();
 }
 
 fetchWeather();
