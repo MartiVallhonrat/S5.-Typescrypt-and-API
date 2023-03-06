@@ -113,3 +113,6 @@ function fetchJoke(): void {
     }
     changeBackground();
 }
+
+// remember compile
+fetchWeather()
