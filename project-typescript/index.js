@@ -1,8 +1,8 @@
 "use strict";
 document.getElementById("nextButton").addEventListener("click", fetchJoke);
-document.getElementById("emoji1").addEventListener("click", addScore1);
-document.getElementById("emoji2").addEventListener("click", addScore2);
-document.getElementById("emoji3").addEventListener("click", addScore3);
+document.getElementById("emoji1").addEventListener("click", addScore);
+document.getElementById("emoji2").addEventListener("click", addScore);
+document.getElementById("emoji3").addEventListener("click", addScore);
 const reportAcudits = [];
 let counter = -1;
 function fetchWeather() {
@@ -47,20 +47,20 @@ function fetchJokeDad() {
     document.getElementById("emoji2").style.visibility = "visible";
     document.getElementById("emoji3").style.visibility = "visible";
 }
-function addScore1() {
+function addScore() {
     debugger;
-    reportAcudits[counter].score = 1;
-    console.log(reportAcudits);
-}
-function addScore2() {
-    debugger;
-    reportAcudits[counter].score = 2;
-    console.log(reportAcudits);
-}
-function addScore3() {
-    debugger;
-    reportAcudits[counter].score = 3;
-    console.log(reportAcudits);
+    if (this.id == "emoji1") {
+        reportAcudits[counter].score = 1;
+        console.log(reportAcudits);
+    }
+    if (this.id == "emoji2") {
+        reportAcudits[counter].score = 2;
+        console.log(reportAcudits);
+    }
+    if (this.id == "emoji3") {
+        reportAcudits[counter].score = 3;
+        console.log(reportAcudits);
+    }
 }
 function fetchChuckJoke() {
     fetch("https://api.chucknorris.io/jokes/random")
