@@ -1,24 +1,26 @@
+"use strict";
 document.getElementById("nextButton").addEventListener("click", fetchJoke);
 document.getElementById("emoji1").addEventListener("click", addScore1);
 document.getElementById("emoji2").addEventListener("click", addScore2);
 document.getElementById("emoji3").addEventListener("click", addScore3);
-var reportAcudits = [];
-var counter = -1;
+const reportAcudits = [];
+let counter = -1;
 function fetchWeather() {
-    var endpoint = 'https://api.openweathermap.org/data/2.5/weather';
-    var city = 'Barcelona';
-    var units = 'metric';
-    var apiKey = '5dacd27a842b40d35e21327eb4eefbef';
-    var url = "".concat(endpoint, "?q=").concat(city, "&units=").concat(units, "&appid=").concat(apiKey);
+    const endpoint = 'https://api.openweathermap.org/data/2.5/weather';
+    const city = 'Barcelona';
+    const units = 'metric';
+    const apiKey = '5dacd27a842b40d35e21327eb4eefbef';
+    const url = `${endpoint}?q=${city}&units=${units}&appid=${apiKey}`;
     fetch(url)
-        .then(function (response) { return response.json(); })
-        .then(function (data) {
-        var weather = data.weather, main = data.main;
-        var icon = "http://openweathermap.org/img/w/".concat(weather[0].icon, ".png");
-        var temp = main.temp;
-        document.getElementById("temperature").innerHTML = "<div class=\"h2\"><strong> ".concat(temp, "\u00BAC </strong></div>");
-        document.getElementById("wheater").innerHTML = "<img class=\"\" src=".concat(icon, " alt=\"\">");
-    })["catch"](function (error) {
+        .then(response => response.json())
+        .then(data => {
+        const { weather, main } = data;
+        const icon = `http://openweathermap.org/img/w/${weather[0].icon}.png`;
+        const temp = main.temp;
+        document.getElementById("temperature").innerHTML = `<div class="h2"><strong> ${temp}ºC </strong></div>`;
+        document.getElementById("wheater").innerHTML = `<img class="" src=${icon} alt="">`;
+    })
+        .catch(error => {
         console.error('Error fetching data:', error);
     });
 }
@@ -29,8 +31,8 @@ function fetchJokeDad() {
             'Accept': 'application/json'
         }
     })
-        .then(function (response) { return response.json(); })
-        .then(function (jokeJSON) {
+        .then(response => response.json())
+        .then(jokeJSON => {
         console.log(jokeJSON.joke);
         document.getElementById("HTMLjoke").innerHTML = jokeJSON.joke;
         reportAcudits.push({
@@ -38,7 +40,8 @@ function fetchJokeDad() {
             date: (new Date()).toISOString()
         });
         console.log(reportAcudits);
-    })["catch"](function (error) { return console.error(error); });
+    })
+        .catch(error => console.error(error));
     counter = counter + 1;
     document.getElementById("emoji1").style.visibility = "visible";
     document.getElementById("emoji2").style.visibility = "visible";
@@ -61,8 +64,8 @@ function addScore3() {
 }
 function fetchChuckJoke() {
     fetch("https://api.chucknorris.io/jokes/random")
-        .then(function (response) { return response.json(); })
-        .then(function (jokeJSON) {
+        .then(response => response.json())
+        .then(jokeJSON => {
         console.log(jokeJSON.value);
         document.getElementById("HTMLjoke").innerHTML = jokeJSON.value;
         reportAcudits.push({
@@ -70,11 +73,12 @@ function fetchChuckJoke() {
             date: (new Date()).toISOString()
         });
         console.log(reportAcudits);
-    })["catch"](function (error) { return console.error(error); });
+    })
+        .catch(error => console.error(error));
     counter = counter + 1;
 }
 function changeBackground() {
-    document.getElementById("blobBackground").style.backgroundImage = "url('svg/blob".concat(Math.floor(Math.random() * 9), ".svg')");
+    document.getElementById("blobBackground").style.backgroundImage = `url('svg/blob${Math.floor(Math.random() * 9)}.svg')`;
 }
 function fetchJoke() {
     if ((counter % 2) == 0) {
@@ -85,3 +89,5 @@ function fetchJoke() {
     }
     changeBackground();
 }
+// remember compile
+fetchWeather();
